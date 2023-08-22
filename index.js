@@ -134,3 +134,26 @@ function fullname(firstname, lastname) {
     return `Welcome ${lastname},${firstname}😊!!!`
 } 
 console.log(fullname('charan','reddy'));
+
+//terenary operator -3 operands 
+//binary operator -2 operands mathematical operators,logical operator,relational operators
+// unary operator - 1operand ++,--,!,bitwise~,>> <<
+
+const nums = [9, 7, 4];
+const res = nums.map(n => n * 2);
+
+console.log(nums);
+console.log(res); // copy
+
+
+const avengers = [
+  "Hulk",
+  "Iron man",
+  "Black widow",
+  "Captain america",
+  "Spider man",
+  "Thor",
+];
+
+// [4, 8, ]
+console.log(avengers.map(hero => hero.length));
