@@ -157,3 +157,9 @@ const avengers = [
 
 // [4, 8, ]
 console.log(avengers.map(hero => hero.length));
+console.log(avengers.map(hero => hero.length>1));
+console.log(avengers.push('ranga'));
+console.log(avengers.push(100));
+console.log(avengers);
+console.log(avengers.pop('thor'));
+console.log(avengers);
