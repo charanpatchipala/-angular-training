@@ -5,7 +5,7 @@ div{
    border: 2px solid beige; 
   border-radius: 25px;
    padding: 8px;
-   background-color: green;
+   background-color: rgb(51, 23, 23);
 }
 body{
     margin: 0;
@@ -35,4 +35,7 @@ height: 300px;
 border-radius: 10%;
 object-fit: cover;
    
+}
+b{
+    color: white;
 }

@@ -1,0 +1,18 @@
+h1{
+text-transform: capitalize;
+}
+p1{
+    line-height: 0.5;
+    background-color: aqua;
+    border:6px solid blue;
+}
+p2{
+    border:8px solid black;
+}
+img{
+    width: 150px;
+    height: 150px;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    border:8px solid black;
+}
