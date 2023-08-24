@@ -1,0 +1,38 @@
+div{
+    width: 300px;
+     text-align: center;
+   padding-top: 1000px;
+   border: 2px solid beige; 
+  border-radius: 25px;
+   padding: 8px;
+   background-color: green;
+}
+body{
+    margin: 0;
+    justify-content: center;
+    font-family: sans-serif;
+    align-items: center;
+    display: flex;
+    background-color: rgb(23, 10, 10);
+}
+h1{
+
+    color: azure;
+}
+h6{
+     color:rgb(73, 65, 43); 
+}
+p1{
+    text-align: center;
+    justify-content: center;
+    /* text-align: justify; */
+    color: azure;
+}
+img{
+    aspect-ratio: 1/1;
+width: 300px;
+height: 300px;
+border-radius: 10%;
+object-fit: cover;
+   
+}
