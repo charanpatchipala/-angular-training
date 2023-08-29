@@ -6,24 +6,33 @@ body{
 }
 .sunnyside{
     margin: 0;
-    width:100%;
+    /* width:100%; */
     background-image: url(sunnyside/image-header.jpg);
     height: 30rem;
      background-repeat: no-repeat;
     background-size:cover;
     background-position: bottom;
     display: grid;
+    color: #ffffff;
 }
 .title{
     display:flex;
     justify-content: space-between;
+    align-items: center;
     padding: 10px;
 } 
 .heading1{
     font-size: 3rem;
     text-align: center;
-    transform: translateY(-200px);
+    transform: translateY(-50px);
+    transform: translateX(-20px);
 }
+.arrow {
+    display: block;
+    margin: 0 auto;
+    transform: translateY(-50%);
+  }
+  
 .homebuttons{
     display: flex;
     gap: 10px;
@@ -31,9 +40,9 @@ body{
 }
 .section2{
  margin: 0; 
- /* min-height: 1000px;   */
+ /* height: 2000px; */
  display: grid;
-    grid-template-columns: 1fr 1fr;
+    /* grid-template-columns: 1fr; */
     /* grid-template-columns: repeat(auto-fit, minmax(600px,6fr)); */
 }
 .section2 > div:nth-child(5), .section2 > div:nth-child(6){
@@ -44,10 +53,16 @@ body{
 padding: 7rem;
 }
 .content2{
+    height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: center;
     padding: 1rem;
+    transform: translateY(100px);
+}
+
+.img2, .img3{
+    height: 500px;
 }
 
 .img1{
@@ -79,32 +94,41 @@ background-size: cover;
 }
 .section3{
     margin: 0;
+    display:grid;
+    justify-items: center;
+    margin: 25px;
     /* min-height: 100vh; */
+}
+.clientddata{
+margin: 0;
 }
 .testimonial{
     text-align: center;
 }
 .client{
     display: flex;
+    flex-direction: column;
    justify-items: center;
-    gap: 15px;
+    gap: 20px;
 }
 .clientimage{
     border-radius: 50%;
-    transform: scale(20px);
-    /* width:60px;
-    height: 60px; */
+    /* transform: scale(5px); */
+    width:60px;
+    height: 60px;
 }
 .clientname{
+    margin: 0;
     font-weight: bold;
 }
 .client1, .client2, .client3{
     display: grid;
+    text-align: center;
     justify-items: center;
 }
 .products{
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     height:30rem;
 }
 .products > div {
@@ -122,4 +146,60 @@ background-size: cover;
 }
 .products > :nth-child(4){
     background-image: url(sunnyside/image-gallery-sugarcubes.jpg);
+}
+
+footer{
+    height: 200px;
+    display: grid;
+    justify-items: center;
+    background-color: aquamarine;
+    align-content: center;
+}
+ul{
+    /* margin: 0px; */
+    padding: 0px;
+    list-style: none;
+    display: flex;
+  align-items: center;
+    gap: 10px;
+}
+.footer{
+    display: flex;
+    gap: 15px;
+    margin: 10px;
+}
+.svgs{
+    border-radius: 50%;
+}
+
+
+@media(min-width:600px){
+    .sunnyside{
+       width: 100%;
+    }
+    .homebuttons p {
+        color: black;
+        margin: 0;
+        padding: 10px;
+        transition: background-color 0.3s ease-in-out, border 0.3s ease-in-out;
+      }
+      
+      .homebuttons p:hover {
+        background-color: #ffffff; /* Change to your desired background color */
+        border: 1px solid #ffffff;
+        border-radius: 5px;
+      }
+
+    .section2{
+           grid-template-columns: 1fr 1fr;
+       }
+       .client{
+       flex-direction: row;
+    }
+    .img2, .img3{
+        height: 100%;
+    }
+    .products{
+        grid-template-columns: repeat(4, 1fr);
+    }
 }
