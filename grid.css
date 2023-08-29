@@ -1,0 +1,125 @@
+body{
+    margin:0;
+    min-height: 100vh;
+    /* min-width: 100vw; */
+    font-family: sans-serif;
+}
+.sunnyside{
+    margin: 0;
+    width:100%;
+    background-image: url(sunnyside/image-header.jpg);
+    height: 30rem;
+     background-repeat: no-repeat;
+    background-size:cover;
+    background-position: bottom;
+    display: grid;
+}
+.title{
+    display:flex;
+    justify-content: space-between;
+    padding: 10px;
+} 
+.heading1{
+    font-size: 3rem;
+    text-align: center;
+    transform: translateY(-200px);
+}
+.homebuttons{
+    display: flex;
+    gap: 10px;
+    /* padding: 10px ; */
+}
+.section2{
+ margin: 0; 
+ /* min-height: 1000px;   */
+ display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* grid-template-columns: repeat(auto-fit, minmax(600px,6fr)); */
+}
+.section2 > div:nth-child(5), .section2 > div:nth-child(6){
+    height:25rem;
+    text-align: center;
+}
+.content1{
+padding: 7rem;
+}
+.content2{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 1rem;
+}
+
+.img1{
+background-color: rgb(255, 247, 240);
+text-align: center;
+}
+.img2{
+background-image: url(sunnyside/image-transform.jpg);
+background-repeat: no-repeat;
+background-size: cover;
+}
+.img4{
+    background-color: azure;
+}
+.img3{
+    background-image: url(sunnyside/image-stand-out.jpg);
+    background-repeat: no-repeat;
+background-size: cover;
+}
+.img5{
+background-image: url(sunnyside/image-graphic-design.jpg);
+background-repeat: no-repeat;
+background-size: cover;
+}
+.img6{
+    background-image: url(sunnyside/image-photography.jpg);
+    background-repeat: no-repeat;
+background-size: cover;
+}
+.section3{
+    margin: 0;
+    /* min-height: 100vh; */
+}
+.testimonial{
+    text-align: center;
+}
+.client{
+    display: flex;
+   justify-items: center;
+    gap: 15px;
+}
+.clientimage{
+    border-radius: 50%;
+    transform: scale(20px);
+    /* width:60px;
+    height: 60px; */
+}
+.clientname{
+    font-weight: bold;
+}
+.client1, .client2, .client3{
+    display: grid;
+    justify-items: center;
+}
+.products{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    height:30rem;
+}
+.products > div {
+    background-size: cover;
+    background-position: center;
+}
+.products > :nth-child(1){
+    background-image: url(sunnyside/image-gallery-milkbottles.jpg);
+}
+.products > :nth-child(2){
+    background-image: url(sunnyside/image-gallery-orange.jpg);
+}
+.products > :nth-child(3){
+    background-image: url(sunnyside/image-gallery-cone.jpg);
+}
+.products > :nth-child(4){
+    background-image: url(sunnyside/image-gallery-sugarcubes.jpg);
+}

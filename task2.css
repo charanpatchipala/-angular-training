@@ -1,11 +1,15 @@
-div{
+main{
+    display: flex;
+}
+.movie{
     width: 300px;
      text-align: center;
    padding-top: 1000px;
    border: 2px solid beige; 
   border-radius: 25px;
    padding: 8px;
-   background-color: rgb(51, 23, 23);
+   background-color: rgb(119, 43, 43);
+    cursor: pointer;
 }
 body{
     margin: 0;
@@ -14,13 +18,15 @@ body{
     align-items: center;
     display: flex;
     background-color: rgb(23, 10, 10);
+    transition:all 1s;
+    cursor: grab;
 }
 h1{
 
     color: azure;
 }
 h6{
-     color:rgb(73, 65, 43); 
+     color:rgb(184, 171, 135); 
 }
 p1{
     text-align: center;
@@ -29,13 +35,57 @@ p1{
     color: azure;
 }
 img{
+    /* clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%); */
     aspect-ratio: 1/1;
 width: 300px;
 height: 300px;
-border-radius: 10%;
+border-radius: 25px;
 object-fit: cover;
    
 }
 b{
     color: white;
 }
+
+/* .movie{
+    transition:all 1s;
+    cursor: grab;
+} */
+.movie:hover{
+    clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
+    background-color: aqua;
+    filter: grayscale(100%);
+    border-radius:40%;
+    transform:rotate(180deg);
+    /* transition:all 1s; */
+}
+.movie:active{
+    background-color: blueviolet;
+    /* transform: scale(1.5); */
+}
+/* .google{
+    width: 100px;
+    height: 100px;
+    display: grid;
+    place-content: center;
+    /* text-align: top; */
+   /* padding-left: 300px;  
+  border: 2px solid beige; 
+ border-radius: 25px;
+  background-color: rgb(12, 12, 12);
+  transition:all 1s;
+    transform: scale(1.1) rotate(360deg);
+}
+.google:hover{
+    color:beige;
+}
+.google:visited{
+    color:rgb(245, 220, 237);
+}
+.google:focus{
+    color:rgb(21, 255, 0);
+}
+.google:active{
+    background-color: black;
+    text-transform: uppercase;
+} */

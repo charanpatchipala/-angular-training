@@ -1,0 +1,105 @@
+body{
+    /* width: 100vh; */
+    background-color: #edf2f8;
+    display:grid;
+    place-content: center;
+    height: 100vh;
+    font-size: 13px;
+    font-family: sans-serif;
+    margin: 0px;
+    /* padding: 1%; */
+}
+.main{
+    background: #ffffff;
+    width: 75%; /* Decreased width to 80% */
+    margin: auto; /* Centering the container */
+    display: flex;
+    /* flex-direction: column; Stacking contents vertically */
+    align-items: center; /* Centering content horizontally */
+    justify-content: space-evenly;
+    border-radius: 20px;
+
+    /* padding: 20px; Adding some padding for spacing */
+    /* New styles for equal width and height */
+    height: 65vh; /* Adjust the height as needed */
+    font-family: sans-serif;
+}
+.img-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    overflow: clip;
+    border-radius: 20px;
+}
+
+.content {
+    /* width: 100%;
+    height: 100%; */
+    /* display: flex;
+    /* flex-direction: column; Stacking contents vertically 
+    justify-content: center;
+    /* align-items: center; */
+    padding: 30px;
+}
+
+.h1{
+    font-family: sans-serif;
+    font-weight: 700;
+}
+.text{
+    font-family:sans-serif;
+    font-weight: 500;
+}
+.author{
+    font-family: sans-serif;
+    display: flex;
+align-items: center;/* allign items vertically */
+
+}
+.img2{
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+}
+/* .icon{
+    position:relative;
+    /* display:flex;
+    justify-content:flex end; 
+  padding-left:300px;
+} */
+.icon:hover{
+    cursor: pointer;
+}
+.icon-container {
+    position: relative;
+    display: inline-block; /* Ensures the container size matches the icon size */
+}
+.authorname{
+    padding-left:10px ;
+}
+
+.icon {
+    padding-left: 280px;
+}
+
+.icon-container:hover .icon::before {
+    content: "Share this article"; /* Tooltip message */
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    top: -40px; /* Adjust the distance from the icon */
+    /* left: 50%; */
+    transform: translateX(-50%);
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+}
+
+.icon-container:hover .icon::before {
+    opacity: 1;
+    visibility: visible;
+}
