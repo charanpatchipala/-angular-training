@@ -33,7 +33,7 @@ justify-content: flex-end;
   }
   .img{
     height: 200px;
-    background-image:url(image-header-desktop.jpg) ;
+    background-image:url( "https://upload.wikimedia.org/wikipedia/commons/7/7b/India_flag_300.png") ;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;

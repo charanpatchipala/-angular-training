@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const promise = new Promise((resolve, reject) => {
+        const age = 17;
+        if (age >= 18) {
+          resolve("you are eligible");
+        } else {
+          reject("next time👶");
+        }
+      });
+      console.log(promise);
+      const x = promise;
+      x.then((a) => console.log(a)).catch((error) =>
+        console.log("error:" + error)
+      );
+    </script>
+  </body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        margin: 0px;
+        min-height: 100vh;
+      }
+      .section1 {
+        background-image: url();
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 25rem;
+      }
+      .section1:hover {
+        cursor: pointer;
+      }
+      .buttons {
+        display: flex;
+        justify-content: space-between;
+      }
+      .left,
+      .right {
+        height: 25rem;
+        width: 2rem;
+        font-size: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="section1" onmouseover="pause()" onmouseout="start()">
+      <div class="buttons">
+        <button class="left" onclick="left()"><</button>
+        <button class="right" onclick="right()">></button>
+      </div>
+    </section>
+    <script>
+      const moon = [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/FullMoon2010.jpg/330px-FullMoon2010.jpg",
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Far_side_of_the_Moon.png/330px-Far_side_of_the_Moon.png",
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Archean.png/495px-Archean.png",
+        "https://upload.wikimedia.org/wikipedia/commons/7/7b/India_flag_300.png",
+      ];
+      var c;
+      let index = 0;
+      function start() {
+        c = setInterval(() => {
+          if (index >= moon.length) {
+            index = 0;
+          }
+          document.querySelector(".section1").style.backgroundImage =
+            "url(" + moon[index] + ")";
+          index++;
+        }, 1000);
+      }
+      start();
+
+      function pause() {
+        clearInterval(c);
+      }
+      function left() {
+        pause();
+        index = (index - 1 + moon.length) % moon.length;
+        document.querySelector(".section1").style.backgroundImage =
+          "url(" + moon[index] + ")";
+      }
+
+      function right() {
+        pause();
+        index = (index + 1) % moon.length;
+        document.querySelector(".section1").style.backgroundImage =
+          "url(" + moon[index] + ")";
+      }
+
+      // function right() {
+      //   setInterval(() => {
+      //     if (index >= moon.length) {
+      //       index = 0;
+      //     }
+      //     document.querySelector(".section1").style.backgroundImage =
+      //       "url(" + moon[index] + ")";
+      //     index += 1;
+      //     console.log(index);
+      //   }, 1000);
+      // }
+      // right();
+    </script>
+  </body>
+</html>

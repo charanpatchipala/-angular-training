@@ -1,0 +1,39 @@
+body {
+    display: grid;
+    place-content: center; 
+    justify-items: center;
+    min-height: 100vh;
+    align-items: center;
+}
+.images{
+    position: relative;
+    height: 200px;
+    aspect-ratio: 1/1;
+}
+.pic1{
+    /* position: relative; */
+    height: 100%;
+    width:100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+.number{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0px;
+    padding: 4px;
+    height:24px;
+    aspect-ratio: 1/1;
+    background-color: rgb(205, 255, 221);
+    border-radius: 50%;
+    position: absolute;
+    top: 0px;
+    right: 25px;
+    transition: all 1s;
+}
+.images:hover .number { 
+    cursor: pointer;
+    transform: scale(10);
+    background-color: aqua;
+}

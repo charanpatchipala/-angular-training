@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        margin: 0;
+        display: grid;
+        min-height: 100vh;
+        text-align: center;
+        place-content: center;
+        background-color: seagreen;
+      }
+    </style>
+  </head>
+  <body>
+    <h2 class="timer">10</h2>
+    <script>
+      function countdown() {
+        return new Promise((resolve) => {
+          let count = 10;
+          function timer() {
+            if (count > 0) {
+              document.querySelector(".timer").innerText = --count;
+              setTimeout(timer, 1000);
+            } else {
+              document.querySelector(".timer").innerText = "charan";
+              //   resolve();
+              setTimeout(timer, 1000);
+            }
+          }
+          timer();
+        });
+      }
+      //   conutdown()
+      const x = countdown();
+      x.then((a) => console.log("hi" + a));
+      x.catch((error) => console.error("invalid", error));
+    </script>
+  </body>
+</html>
+
+//const promise = new Promise((resolve, reject) => { // const age = 17; // if
+(age >= 18) { // resolve("you are eligible"); // } else { // reject("next time
+👶"); // } // }); // console.log(promise); // const x = promise; // x.then((a)
+=> console.log(a)); // x.catch((error) => console.log(error));

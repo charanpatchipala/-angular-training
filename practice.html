@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Countries Information</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+      }
+      .country-card {
+        border: 1px solid #ccc;
+        padding: 20px;
+        margin: 20px;
+        display: flex;
+        align-items: center;
+      }
+      .country-flag {
+        max-width: 100px;
+        margin-right: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Countries Information</h1>
+
+    <script>
+      const countriesInfo = [
+        {
+          name: "India",
+          population: "1,394,975,829",
+          region: "Asia",
+          flag: "https://upload.wikimedia.org/wikipedia/commons/7/7b/India_flag_300.png",
+          capital: "New Delhi",
+        },
+        {
+          name: "Germany",
+          population: "81,770,900",
+          region: "Europe",
+          flag: "https://upload.wikimedia.org/wikipedia/en/thumb/b/ba/Flag_of_Germany.svg/1200px-Flag_of_Germany.svg.png",
+          capital: "Berlin",
+        },
+      ];
+
+      const body = document.querySelector("body");
+
+      countriesInfo.forEach((country) => {
+        const countryCard = document.createElement("div");
+        countryCard.className = "country-card";
+
+        const flagImage = document.createElement("img");
+        flagImage.className = "country-flag";
+        flagImage.src = country.flag;
+        flagImage.alt = `${country.name} Flag`;
+
+        const countryInfo = document.createElement("div");
+        countryInfo.innerHTML = `
+                <h2>${country.name}</h2>
+                <p><strong>Population:</strong> ${country.population}</p>
+                <p><strong>Region:</strong> ${country.region}</p>
+                <p><strong>Capital:</strong> ${country.capital}</p>
+            `;
+
+        countryCard.appendChild(flagImage);
+        countryCard.appendChild(countryInfo);
+
+        body.appendChild(countryCard);
+      });
+    </script>
+  </body>
+</html>

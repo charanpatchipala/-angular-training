@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Archean.png/495px-Archean.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+    </style>
+  </head>
+  <body>
+    <button onclick="start()">Start</button>
+    <!-- <button onclick="stop()">stop</button>
+    <button onclick="pause()">pause</button> -->
+    <script>
+      //runner
+      // const charanIntv = window.setInterval(() => {
+      //   console.log("hi, charan ");
+      // }, 2000);
+
+      // // window.clearInterval(CharanIntvl)
+      // window.setTimeout(() => {
+      //   window.clearInterval(charanIntv);
+      // }, 6000);
+      var c;
+      const moon = [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/FullMoon2010.jpg/330px-FullMoon2010.jpg",
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Far_side_of_the_Moon.png/330px-Far_side_of_the_Moon.png",
+      ];
+      //   const body = document.querySelector("body");
+      let index = 0;
+      function start() {
+        c = setInterval(() => {
+          if (index >= moon.length) {
+            index = 0;
+          }
+          document.body.style.backgroundImage = "url(" + moon[index] + ")";
+          index++;
+        }, 2000);
+      }
+      function stop() {
+        index = 0;
+        window.clearInterval(c);
+      }
+      function pause() {
+        clearInterval(c);
+      }
+    </script>
+  </body>
+</html>

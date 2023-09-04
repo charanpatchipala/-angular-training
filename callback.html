@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        display: grid;
+        min-height: 100vh;
+        place-content: center;
+        margin: 0;
+        background-color: aquamarine;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 class="timer">10</h1>
+    <script>
+      var count = 10;
+      const timer = document.querySelector(".timer");
+      setTimeout(() => {
+        timer.innerText = --count;
+        setTimeout(() => {
+          timer.innerText = --count;
+          setTimeout(() => {
+            timer.innerText = --count;
+            setTimeout(() => {
+              timer.innerText = --count;
+              setTimeout(() => {
+                timer.innerText = --count;
+                setTimeout(() => {
+                  timer.innerText = --count;
+                  setTimeout(() => {
+                    timer.innerText = --count;
+                    setTimeout(() => {
+                      timer.innerText = --count;
+                      setTimeout(() => {
+                        timer.innerText = --count;
+                        setTimeout(() => {
+                          timer.innerText = "hi";
+                        }, 1000);
+                      }, 1000);
+                    }, 1000);
+                  }, 1000);
+                }, 1000);
+              }, 1000);
+            }, 1000);
+          }, 1000);
+        }, 1000);
+      }, 1000);
+    </script>
+  </body>
+</html>
