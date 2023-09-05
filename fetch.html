@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        display: flex;
+      }
+      .flagcontainer {
+        display: grid;
+      }
+    </style>
+  </head>
+  <body>
+    <ul class="topc"></ul>
+    <script>
+      const main = document.querySelector(".topc");
+      fetch("https://restcountries.com/v3.1/all")
+        .then((response) => response.json())
+        .then((data) => {
+          //   const cname = data.map((cn) => cn.name.common);
+          //   console.log(cname);
+          // .filter((c) => c.population > 1_00_00_000)
+          // .sort((a, b) => b.population - a.population)
+          // .map((cname, index) => `${cname.name.common} - ${cname.population}`)
+          // .slice(0, 10);
+          // .join("\n");
+          //   console.log(population);
+          data.forEach((element) => {
+            console.log(element);
+            main.innerHTML += `<section class="flagcontainer">
+      <img
+        src=${element.flags.png}
+        alt=${name}/>
+
+      <div class="flag-details-container">
+        <h2 class="country-name">${element.name.common}</h2>
+
+        <p><span>Population:</span> ${element.population}</p>
+         <p><span>Region:</span> ${element.region}</p>
+        <p><span>Capital:</span> ${element.capital}</p>
+      </div>
+    </section> `;
+          });
+        });
+    </script>
+  </body>
+</html>

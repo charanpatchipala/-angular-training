@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        display: grid;
+        min-height: 100vh;
+        margin: 0;
+        place-content: center;
+        background-color: whitesmoke;
+        gap: 10px;
+      }
+      .profile {
+        display: flex;
+        background-color: white;
+        align-items: center;
+        gap: 10px;
+        min-width: 30rem;
+        border-radius: 20px;
+      }
+      .avatar {
+        border-radius: 50%;
+        height: 50px;
+        width: 50px;
+      }
+      .cards {
+        display: grid;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="data"></section>
+    <!-- <section class="profile">
+      <img
+        src="https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/864.jpg"
+        alt="profilename"
+        class="avatar"
+      />
+      <div class="cards">
+        <p><strong>Name:</strong></p>
+        <p class><strong>data</strong></p>
+      </div>
+    </section> -->
+    <script>
+      const main = document.querySelector(".data");
+      const cards = ({ avatar, name, createdAt, id }) => {
+        document.querySelector("body").innerHTML += `<section class="profile">
+                       <img
+                   src=${avatar}
+                   alt=${name}
+                     class="avatar"/>
+                     <div class="content">
+                     <p><strong>Name:</strong>${name}</p>
+                     <p class>${new Date(createdAt).toDateString()}</p>
+                     <button onclick="deleteUser(${id})">Delete</button>
+                   </div>
+                 </section>`;
+      };
+      function deleteUser(id) {
+        fetch("https://64f6f41e9d7754084952d8a0.mockapi.io/users", {
+          method: "DELETE",
+        }).then(() => getUsers()); //refresh data
+        console.log("deleting... User", id);
+      }
+      function getUsers() {
+        fetch("https://64f6f41e9d7754084952d8a0.mockapi.io/users", {
+          method: "GET",
+        })
+          .then((response) => response.json())
+          .then((profile) => {
+            profile.forEach(cards);
+          });
+      }
+      getUsers();
+    </script>
+  </body>
+</html>
