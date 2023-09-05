@@ -1,0 +1,178 @@
+body{
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+.header{
+    background-image: url(sunnyside/image-header.jpg);
+    height: 100vh;
+    background-size: cover;
+    background-position: bottom;
+}
+.home{
+    display:flex;
+    flex-direction: column;
+justify-content: space-between;
+align-items: center;
+padding: 15px;
+}
+.navigation{
+    display: flex;
+    color: white;
+}
+.navigation p{
+    color: white;
+    padding: 0.8rem;
+}
+.navigation p:hover{
+    background-color: whitesmoke;
+    border-radius: 20px;
+    color: black;
+}
+.heading1{
+ font-size: 3rem;
+text-align: center;
+color:white
+}
+.arrow{
+    transform: translateX(50vw) translateY(-10px);
+}
+
+.items{
+    display: grid;
+    min-height: 100vh;
+    grid-template-columns: 1fr;
+}
+
+
+.img1 a{
+    text-decoration: none;
+    color:black;
+    border-bottom:2px solid yellow;
+}
+.img4 a{
+    text-decoration: none;
+    color:black;
+    border-bottom:2px solid palevioletred;
+}
+.img1 h4 {
+    transform: translateY(10px);
+}
+.img2{
+background-image: url(sunnyside/image-transform.jpg);
+background-position: center;
+background-size: cover;
+}
+.img3{
+    background-image: url(sunnyside/image-stand-out.jpg);
+    background-position: center;
+    background-size: cover;
+    }
+    .img5{
+        background-image: url(sunnyside/image-graphic-design.jpg);
+        background-position: top;
+    background-size: cover;
+    }
+    .img6{
+        background-image: url(sunnyside/image-photography.jpg);
+        background-position: top;
+    background-size: cover;
+    }
+    .img2, .img3{
+        /* height: 500px; */
+    }
+    .items > div:nth-child(5), .items > div:nth-child(6){
+        height:400px;
+    }
+    .content1{
+        padding: 20%;
+    }
+    .content2{
+        text-align: center;
+        padding: 0px 150px;
+       transform: translateY(270px);
+    }
+    .testimonials{
+        margin: 40px;
+        display:grid;
+        justify-items: center;
+        padding:0px 100px;
+    }
+    .clients{
+        display:flex;
+        flex-direction: column;
+        text-align: center;
+        margin:10px;
+    }
+    .clientimage{
+        border-radius: 50%;
+        height:60px;
+        aspect-ratio: 1/1;
+    }
+    .products{
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+    .pimage{
+        flex:1;
+        background-size: cover;
+        background-position: center;
+        height:400px;
+        object-fit: cover;
+    }
+    .p1{
+        background-image: url(sunnyside/image-gallery-cone.jpg);
+    }
+    .p2{
+        background-image: url(sunnyside/image-gallery-milkbottles.jpg);
+    }
+    .p3{
+        background-image: url(sunnyside/image-gallery-orange.jpg);
+    }
+    .p4{
+        background-image: url(sunnyside/image-gallery-sugarcubes.jpg);
+    }
+    
+    footer{
+        height: 200px;
+    display: grid;
+    justify-items: center;
+    background-color: aquamarine;
+    align-content: center;
+    }
+
+    
+    footer > ul{
+        /* margin: 0px; */
+        padding: 0;
+        list-style: none;
+        display: flex;
+      align-items: center;
+        gap: 10px;
+    }
+    .footer{
+        display: flex;
+        gap: 15px;
+      margin-top: 2rem;
+    }
+    .svgs{
+        border-radius: 50%;
+    }
+    
+   @media(min-width:600px){
+    .home{
+        flex-direction: row;
+    }
+.items{
+    grid-template-columns: 1fr 1fr;
+}
+.clients{
+    flex-direction: row;
+}
+.products{
+    display: flex;
+    /* grid-template-columns: repeat(4,1fr); */
+}
+
+   }
+    
