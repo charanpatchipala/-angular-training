@@ -4,8 +4,54 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <style>
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        gap: 20px;
+        place-content: center;
+        font-family: Roboto, "san-serif";
+        background: whitesmoke;
+      }
+      .section {
+        display: grid;
+        /* grid-template-columns: 1fr 1fr 1fr 1fr; */
+        gap: 20px;
+      }
+      .flagcard {
+        background-color: blueviolet;
+        border-radius: 20px;
+        overflow: hidden;
+      }
+    </style>
   </head>
   <body>
-    <script></script>
+    <script>
+      const country = ({ flags, name, population, region, capital }) => {
+        document.body.innerHTML += `<section class="section">
+                <div class="flagcard">
+        <img
+          src=${flags.png}
+          alt=${name}
+          class="flag"/>
+
+        <div class="flag-details-container">
+          <h2 class="country-name">${name.common}</h2>
+
+          <p><span>Population:</span> ${population}</p>
+           <p><span>Region:</span> ${region}</p>
+          <p><span>Capital:</span> ${capital}</p>
+          </div>
+        </div>
+      </section> `;
+      };
+      fetch("https://restcountries.com/v3.1/all")
+        .then((response) => response.json())
+        .then((data) => {
+          data.forEach(country);
+        });
+    </script>
   </body>
 </html>

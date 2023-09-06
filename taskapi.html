@@ -8,46 +8,55 @@
       body {
         display: grid;
         min-height: 100vh;
-        margin: 0;
+        margin: 10px auto;
         place-content: center;
         background-color: whitesmoke;
+        gap: 10px;
+      }
+      .data {
+        display: grid;
         gap: 10px;
       }
       .profile {
         display: flex;
         background-color: white;
         align-items: center;
-        gap: 10px;
+        justify-content: center;
+        gap: 20px;
         min-width: 30rem;
         border-radius: 20px;
       }
       .avatar {
         border-radius: 50%;
-        height: 50px;
-        width: 50px;
+        height: 70px;
+        width: 70px;
       }
       .cards {
         display: grid;
       }
+      .add {
+        display: block;
+        background-color: aliceblue;
+        cursor: progress;
+      }
+      .search {
+        cursor: grabbing;
+      }
     </style>
   </head>
   <body>
+    <h2>Welcome ✋✋</h2>
+    <input type="text" id="searchInput" placeholder="Enter name" />
+    <input type="text" id="searchInput" placeholder="Enter url" />
+    <button onclick="addUser()" class="add">AddUser</button>
+    <input type="text" class="searchInput" placeholder="Enter user name" />
+    <button onclick="searchUser()" class="search">Search</button>
+
     <section class="data"></section>
-    <!-- <section class="profile">
-      <img
-        src="https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/864.jpg"
-        alt="profilename"
-        class="avatar"
-      />
-      <div class="cards">
-        <p><strong>Name:</strong></p>
-        <p class><strong>data</strong></p>
-      </div>
-    </section> -->
     <script>
       const main = document.querySelector(".data");
       const cards = ({ avatar, name, createdAt, id }) => {
-        document.querySelector("body").innerHTML += `<section class="profile">
+        document.querySelector(".data").innerHTML += `<div class="profile">
                        <img
                    src=${avatar}
                    alt=${name}
@@ -57,10 +66,35 @@
                      <p class>${new Date(createdAt).toDateString()}</p>
                      <button onclick="deleteUser(${id})">Delete</button>
                    </div>
-                 </section>`;
+                 </div>`;
       };
+      function addUser() {
+        console.log("Adding...");
+        const name = document.querySelector(".user-name").value;
+        const avatar = document.querySelector(".user-avatar").value;
+        console.log(name, avatar);
+        fetch(`https://64f6f41e9d7754084952d8a0.mockapi.io/users/`, {
+          method: "GET",
+        }).then(() => getUsers());
+      }
+
+      function searchUser() {
+        const searchInput = document.querySelector(".searchInput").value;
+        fetch(
+          `https://64f6f41e9d7754084952d8a0.mockapi.io/users?name=${searchInput}`,
+          {
+            method: "GET",
+          }
+        )
+          .then((response) => response.json())
+          .then((profile) => {
+            document.querySelector(".data").innerHTML = "";
+            profile.forEach(cards);
+          });
+      }
+
       function deleteUser(id) {
-        fetch("https://64f6f41e9d7754084952d8a0.mockapi.io/users", {
+        fetch(`https://64f6f41e9d7754084952d8a0.mockapi.io/users/${id}`, {
           method: "DELETE",
         }).then(() => getUsers()); //refresh data
         console.log("deleting... User", id);
@@ -71,6 +105,7 @@
         })
           .then((response) => response.json())
           .then((profile) => {
+            document.querySelector(".data").innerHTML = "";
             profile.forEach(cards);
           });
       }
