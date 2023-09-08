@@ -28,13 +28,11 @@
       }
       .placeimage {
         border-radius: 50%;
-        width: 100%;
-        height: auto;
-        max-width: 100px;
-        max-height: 100px;
+        height: 30px;
+        width: 30px;
         overflow: hidden;
       }
-      ards {
+      .cards {
         display: grid;
       }
       .add {
@@ -97,16 +95,11 @@
     <input type="text" class="searchInput" placeholder="Enter destination" />
     <button onclick="searchdestinations()" class="search">Search</button>
     <section class="data"></section>
-    <button onclick="addPlace()" class="add">Add Trip</button>
-    <input
-      type="text"
-      id="searchInput"
-      placeholder="Enter destination"
-      class="searchInput"
-    />
     <div class="buttons">
       <button onclick="prevPage()"><</button>
+
       <span class="page-button-container"> </span>
+
       <button onclick="nextPage()">></button>
     </div>
     <script>
@@ -183,10 +176,14 @@
       }
 
       function nextPage() {
+        console.log(maxlength);
+
         if (pageno == maxlength) {
           return;
         }
+
         pageno++;
+
         getTrips();
       }
       function createButtons() {
@@ -205,14 +202,21 @@
         getTrips();
       }
       function totalUsers() {
-        fetch(`https://64f6f41e9d7754084952d8a0.mockapi.io/users`, {
-          method: "GET",
-        })
+        fetch(
+          `https://64f6f41e9d7754084952d8a0.mockapi.io/users?page=${pageno}&limit=${limit}`,
+          {
+            method: "GET",
+          }
+        )
           .then((res) => res.json())
+
           .then((users) => {
-            const totalTrips = users.length;
-            maxlength = Math.ceil(totalTrips / limit);
+            console.log(users.length);
+
+            maxlength = Math.ceil(users.length / limit);
             createButtons();
+
+            console.log(maxlength);
           });
       }
 
