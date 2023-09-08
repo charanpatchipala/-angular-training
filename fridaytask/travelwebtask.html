@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        display: grid;
+        min-height: 100vh;
+        margin: 10px auto;
+        place-content: center;
+        background-color: whitesmoke;
+        gap: 10px;
+      }
+      .data {
+        display: grid;
+        gap: 10px;
+      }
+      .profile {
+        display: flex;
+        background-color: white;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        min-width: 30rem;
+        border-radius: 20px;
+      }
+      .placeimage {
+        border-radius: 50%;
+        height: 30px;
+        width: 30px;
+        overflow: hidden;
+      }
+      .cards {
+        display: grid;
+      }
+      .add {
+        display: block;
+        background-color: aliceblue;
+        cursor: pointer;
+      }
+      .search {
+        cursor: grabbing;
+      }
+      .buttons {
+        display: flex;
+
+        justify-content: space-between;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Make your trip</h2>
+    <input
+      type="text"
+      id="destinationInput"
+      placeholder="Enter destination"
+      class="user-destination"
+    />
+    <input
+      type="text"
+      id="accommodationInput"
+      placeholder="Enter accommodation"
+      class="user-accommodation"
+    />
+    <input
+      type="text"
+      id="activitiesInput"
+      placeholder="Enter activities"
+      class="user-activities"
+    />
+    <input
+      type="text"
+      id="notesInput"
+      placeholder="Enter notes"
+      class="user-notes"
+    />
+    <input
+      type="text"
+      id="imageUrlInput"
+      placeholder="Enter place URL"
+      class="user-imageUrl"
+    />
+    <button onclick="addPlace()" class="add">Add Trip</button>
+    <input
+      type="text"
+      id="searchInput"
+      placeholder="Enter destination"
+      class="searchInput"
+    />
+    <button onclick="searchDestinations()" class="search">Search</button>
+    <section class="data"></section>
+    <button onclick="addplace()" class="add">Add Trip</button>
+    <input type="text" class="searchInput" placeholder="Enter destination" />
+    <button onclick="searchdestinations()" class="search">Search</button>
+    <section class="data"></section>
+    <div class="buttons">
+      <button onclick="prevPage()"><</button>
+
+      <span class="page-button-container"> </span>
+
+      <button onclick="nextPage()">></button>
+    </div>
+    <script>
+      const main = document.querySelector(".data");
+      let pageno = 1;
+
+      let limit = 5;
+
+      let maxlength;
+
+      const cards = ({
+        imageUrl,
+        destination,
+        date,
+        id,
+        accommodation,
+        activities,
+        notes,
+      }) => {
+        document.querySelector(".data").innerHTML += `<div class="profile">
+                       <img
+                   src=${imageUrl}
+                   alt=${name}
+                     class="placeimage"/>
+                     <div class="content">
+                     <p><strong>Travel-destination :</strong>${destination}</p>
+                     <p class><strong>Date:</strong>${new Date(
+                       date
+                     ).toDateString()}</p>
+                     <p><strong>Accommodation:</strong>${accommodation}</p>
+                     <p><strong>Activities:</strong>${activities}</p>
+                     <p><strong>Notes:</strong>${notes}</p>
+                   </div>
+                 </div>`;
+      };
+
+      function addPlace() {
+        console.log("Adding...");
+        const destination = document.querySelector(".user-destination").value;
+        const accommodation = document.querySelector(
+          ".user-accommodation"
+        ).value;
+        const activities = document.querySelector(".user-activities").value;
+        const notes = document.querySelector(".user-notes").value;
+        const imageUrl = document.querySelector(".user-imageUrl").value;
+        console.log(destination, accommodation, activities, notes, imageUrl);
+        fetch(`https://64f6f41e9d7754084952d8a0.mockapi.io/users/`, {
+          method: "GET",
+        }).then(() => getTrips());
+      }
+
+      function searchdestinations() {
+        const searchInput = document.querySelector(".searchInput").value;
+        fetch(
+          `https://64f6f41e9d7754084952d8a0.mockapi.io/users?destination=${searchInput}`,
+          {
+            method: "GET",
+          }
+        )
+          .then((response) => response.json())
+          .then((profile) => {
+            document.querySelector(".data").innerHTML = "";
+            profile.forEach(cards);
+          });
+      }
+      function prevPage() {
+        if (pageno == 1) {
+          return;
+        }
+
+        pageno--;
+
+        getTrips();
+      }
+
+      function nextPage() {
+        console.log(maxlength);
+
+        if (pageno == maxlength) {
+          return;
+        }
+
+        pageno++;
+
+        getTrips();
+      }
+      function createButtons() {
+        const button = document.querySelector(".page-button-container");
+
+        for (let i = 1; i <= maxlength; i++) {
+          button.innerHTML += `  <button onclick="nav(${i})">${i}</button>`;
+        }
+
+        nav(pageno);
+      }
+
+      function nav(pagenum) {
+        pageno = pagenum;
+
+        getTrips();
+      }
+      function totalUsers() {
+        fetch(
+          `https://64f6f41e9d7754084952d8a0.mockapi.io/users?page=${pageno}&limit=${limit}`,
+          {
+            method: "GET",
+          }
+        )
+          .then((res) => res.json())
+
+          .then((users) => {
+            console.log(users.length);
+
+            maxlength = Math.ceil(users.length / limit);
+            createButtons();
+
+            console.log(maxlength);
+          });
+      }
+
+      totalUsers();
+
+      function getTrips() {
+        fetch(
+          `https://64f6f41e9d7754084952d8a0.mockapi.io/users?page=${pageno}&limit=${limit}`,
+          {
+            method: "GET",
+          }
+        )
+          .then((response) => response.json())
+          .then((profile) => {
+            document.querySelector(".data").innerHTML = "";
+            profile.forEach(cards);
+          });
+      }
+      getTrips();
+    </script>
+  </body>
+</html>
