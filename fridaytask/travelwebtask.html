@@ -12,6 +12,15 @@
         place-content: center;
         background-color: whitesmoke;
         gap: 10px;
+        background-image: url(https://img.freepik.com/free-vector/suitcase-hat-seascape-scene_603843-3531.jpg);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+      }
+      .mainheader {
+        display: block;
+        text-align: center;
+        color: rgb(141, 104, 142);
       }
       .data {
         display: grid;
@@ -19,41 +28,52 @@
       }
       .profile {
         display: flex;
-        background-color: white;
+        background-color: #ea533e61;
         align-items: center;
-        justify-content: center;
+        justify-content: flex-start;
         gap: 20px;
         min-width: 30rem;
         border-radius: 20px;
+        flex-wrap: wrap;
       }
       .placeimage {
-        border-radius: 50%;
+        border-radius: 20px;
         width: 100%;
-        height: auto;
-        max-width: 100px;
-        max-height: 100px;
+        height: 100%;
+        max-width: 280px;
+        max-height: 300px;
         overflow: hidden;
       }
-      ards {
+      .cards {
         display: grid;
       }
-      .add {
+
+      .add,
+      .search {
         display: block;
-        background-color: aliceblue;
+        background-color: rgb(57, 113, 161);
+        font-size: 16px;
+        border-radius: 20px;
+      }
+      .add {
         cursor: pointer;
       }
       .search {
         cursor: grabbing;
       }
+      .content {
+        justify-items: center;
+        padding: 2rem;
+      }
       .buttons {
+        display: none;
         display: flex;
-
         justify-content: space-between;
       }
     </style>
   </head>
   <body>
-    <h2>Make your trip</h2>
+    <h2 class="mainheader">Make your Trip</h2>
     <input
       type="text"
       id="destinationInput"
@@ -91,24 +111,14 @@
       placeholder="Enter destination"
       class="searchInput"
     />
-    <button onclick="searchDestinations()" class="search">Search</button>
+    <button onclick="searchDestinations()" class="search">Search🔍</button>
     <section class="data"></section>
-    <button onclick="addplace()" class="add">Add Trip</button>
-    <input type="text" class="searchInput" placeholder="Enter destination" />
-    <button onclick="searchdestinations()" class="search">Search</button>
-    <section class="data"></section>
-    <button onclick="addPlace()" class="add">Add Trip</button>
-    <input
-      type="text"
-      id="searchInput"
-      placeholder="Enter destination"
-      class="searchInput"
-    />
     <div class="buttons">
       <button onclick="prevPage()"><</button>
       <span class="page-button-container"> </span>
       <button onclick="nextPage()">></button>
     </div>
+
     <script>
       const main = document.querySelector(".data");
       let pageno = 1;
@@ -127,9 +137,9 @@
         notes,
       }) => {
         document.querySelector(".data").innerHTML += `<div class="profile">
-                       <img
+          <img
                    src=${imageUrl}
-                   alt=${name}
+                   alt=${destination}
                      class="placeimage"/>
                      <div class="content">
                      <p><strong>Travel-destination :</strong>${destination}</p>
@@ -139,12 +149,18 @@
                      <p><strong>Accommodation:</strong>${accommodation}</p>
                      <p><strong>Activities:</strong>${activities}</p>
                      <p><strong>Notes:</strong>${notes}</p>
+                     <button onclick="deleteUser(${id})">Delete</button>
                    </div>
                  </div>`;
       };
+      function deleteUser(id) {
+        fetch(`https://64f6f41e9d7754084952d8a0.mockapi.io/users/${id}`, {
+          method: "DELETE",
+        }).then(() => getTrips()); //refresh data
+        console.log("deleting... User", id);
+      }
 
       function addPlace() {
-        console.log("Adding...");
         const destination = document.querySelector(".user-destination").value;
         const accommodation = document.querySelector(
           ".user-accommodation"
@@ -152,10 +168,37 @@
         const activities = document.querySelector(".user-activities").value;
         const notes = document.querySelector(".user-notes").value;
         const imageUrl = document.querySelector(".user-imageUrl").value;
-        console.log(destination, accommodation, activities, notes, imageUrl);
-        fetch(`https://64f6f41e9d7754084952d8a0.mockapi.io/users/`, {
-          method: "GET",
-        }).then(() => getTrips());
+
+        const newTrip = {
+          destination,
+          accommodation,
+          activities,
+          notes,
+          imageUrl,
+        };
+
+        fetch("https://64f6f41e9d7754084952d8a0.mockapi.io/users/", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(newTrip),
+        })
+          .then((response) => {
+            if (response.ok) {
+              document.querySelector(".user-destination").value = "";
+              document.querySelector(".user-accommodation").value = "";
+              document.querySelector(".user-activities").value = "";
+              document.querySelector(".user-notes").value = "";
+              document.querySelector(".user-imageUrl").value = "";
+              getTrips();
+            } else {
+              console.error("Error adding trip:", response.status);
+            }
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+          });
       }
 
       function searchdestinations() {
